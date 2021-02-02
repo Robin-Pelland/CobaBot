@@ -10,7 +10,7 @@ class cobaBot():
 
     def login(self):
         self.driver.get('https://passport.villamaria.qc.ca/pednet/login.asp')
-        #ouvrir coba
+        #opens coba
 
         sleep(2)
         #waiting to load...
@@ -18,19 +18,19 @@ class cobaBot():
         usager_in = self.driver.find_element_by_xpath(
             '//*[@id="txtCodeUsager"]')
         usager_in.send_keys(username)
-        #selectionner le xpath pour le usager et envoyer le "userame" contenu dans "secrets.py"
+        #selects the xpath for the "userame" then sends from "secrets.py" and sends keys
 
         pw_in = self.driver.find_element_by_xpath('//*[@id="txtMotDePasse"]')
         pw_in.send_keys(password)
-        #selectionner le xpath pour le usager et envoyer le "password" contenu dans "secrets.py"
+        #selects the xpath for the "password" then sends the one in "secrets.py"
 
         login_btn = self.driver.find_element_by_xpath(
             '//*[@id="btnConnecter"]')
         login_btn.click()
-        #clique sur le login button
+        #clicks on the login button
 
         sleep(2)
-        #donne du temp pour le browser de loaeder
+        #gives some time 
 
         #gets "travaux" section
         self.driver.get(
@@ -41,10 +41,10 @@ class cobaBot():
             '//*[@id="divPrincipal"]/form/div/table[2]/tbody/tr/td[2]/div/table[*]'
         )
         list_everything = [x.text for x in rwdata]
-        #sauve le html contenu dans le xpath
+        #saves the html (may be a faster way)
 
         sleep(4)
-        # beginning of the strip function
+        # beginning of the strip function can be improved greatly
         regex = r"\((.*?)\)"
         subst = ", "
         string_everything = (", ".join(list_everything))
@@ -105,7 +105,7 @@ class cobaBot():
         numbers_final = list(map(int, numbers_split.split(',')))
         average = sum(numbers_final) / len(numbers_final)
         print("ta note moyenne est: " + str(round(average, 2)) + "%")
-
+#^^ makes the average
 
 bot = cobaBot()
 bot.login()
