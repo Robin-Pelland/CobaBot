@@ -9,8 +9,8 @@ class cobaBot():
         self.driver = webdriver.Chrome()
 
     def login(self):
-        self.driver.get('https://passport.villamaria.qc.ca/pednet/login.asp')
-        #opens coba
+        self.driver.get('')
+        #opens coba IMPORTANT INPUT YOUR SCHOOL COBA LOGIN SITE
 
         sleep(2)
         #waiting to load...
